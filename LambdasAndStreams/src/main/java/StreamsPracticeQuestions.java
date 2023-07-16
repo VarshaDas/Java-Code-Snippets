@@ -1,9 +1,4 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class StreamsCode {
+public class StreamsPracticeQuestions {
     public static void main(String[] args) {
 
         // 1. Write a program to find the sum of all elements in a List using streams.

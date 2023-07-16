@@ -1,8 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class StreamsDemo {
+public class StreamsCodeSolutions {
     public static void main(String[] args) {
         List<Integer> nums = Arrays.asList(1,2,3,4,5,6,8,10);
         int[] arr = {1,2,3,4};
