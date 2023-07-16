@@ -54,13 +54,3 @@ Terminal operations produce a final result or a side effect. They trigger the pr
 #### Lazy Evaluation
 
 Java Streams employ lazy evaluation, which means that the elements of a Stream are processed on-demand, only when a terminal operation is invoked. This approach allows for optimization by avoiding unnecessary computations and improving performance when working with large or infinite Streams.
-
-## Learning 20 Code Questions to Master Java Streams
-
-In this video, we will take your understanding of Java Streams to the next level by presenting you with 20 code questions. These questions are carefully designed to cover various aspects of Java Streams operations, including filtering, mapping, sorting, and more.
-
-For each question, we will provide you with a problem statement and a starting code snippet. We will then guide you through the solution step by step, explaining the underlying concepts and demonstrating how to leverage Java Streams effectively. By the end of this video, you will have a solid foundation in Java Streams and be able to confidently apply them to your own projects.
-
-## Conclusion
-
-Java Streams are a powerful tool in the Java programming language. They enable you to write concise, readable, and maintainable code when working with collections. By mastering Java Streams, you can enhance your coding abilities and improve the efficiency of your projects. Make sure to watch the entire video to unlock the full potential of Java Streams and take your Java skills to new heights. Don't forget to like this video, subscribe to our channel, and hit the notification bell for more exciting Java tutorials. Let's dive into the world of Java Streams and explore the code questions that await us!
