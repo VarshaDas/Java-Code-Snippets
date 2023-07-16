@@ -1,4 +1,3 @@
-
 # Java Code Examples
 
 This repository contains a collection of Java code examples that demonstrate various programming concepts, algorithms, and techniques. It serves as a resource for developers to learn and explore Java programming.
@@ -16,16 +15,13 @@ To get started with these code examples, make sure you have Java Development Kit
 
 Clone this repository to your local machine using the following command:
 
-
 git clone https://github.com/your-username/Java-Code-Examples.git
-
 
 ## Examples
 
-The repository is organized into different directories, each representing a specific topic or category. Each example is placed in its respective directory along with a README file explaining the concept and providing details about the code.
-
-
-Feel free to explore the examples and learn from them. You can modify and experiment with the code to further your understanding.
+1. Lambdas and Streams
+2. Arrays and Collections
+3. Comparators
 
 ## Contributing
 
