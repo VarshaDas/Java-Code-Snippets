@@ -22,6 +22,7 @@ public class StreamsPracticeQuestions {
 
         //6.Write a program to find the average of a List of floating-point numbers using streams.
 
+
         //7.Given a List of strings, write a program to concatenate all the strings using streams.
 
 

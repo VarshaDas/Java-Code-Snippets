@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 
 public class StreamsCodeSolutions {
     public static void main(String[] args) {
-        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,8,10);
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,8,101);
         int[] arr = {1,2,3,4};
        // Write a program to find the sum of all elements in a List using streams.
         int sums = nums.stream().mapToInt(Integer::intValue).sum();
@@ -11,7 +11,7 @@ public class StreamsCodeSolutions {
 
 
         //Given a List of integers, write a program to find the maximum element using streams.
-        int max = nums.stream().max(Comparator.naturalOrder()).orElse(0);
+        int max = nums.stream().max(Comparator.naturalOrder()).get();
 
         System.out.println("max element :"+max);
 
