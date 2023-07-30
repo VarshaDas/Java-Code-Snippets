@@ -29,8 +29,8 @@ public class ComparatorsUsecases {
 
         List<String> strings = Arrays.asList("apples", "elderberry", "banana", "cherry", "date");
         String[] fruits = {"apple", "banana", "cherry", "date"};
+        Collections.sort(strings);
 
-        strings.sort(Comparator.comparingInt(String::length));
         Arrays.sort(fruits, Comparator.comparingInt(String::length));
 
         // 2.Sort the list of integers in descending order and print the result

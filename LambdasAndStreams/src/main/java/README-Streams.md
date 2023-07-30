@@ -8,6 +8,7 @@ A *Stream in Java* - **sequence of elements from a source**.
 
 Before Java 8, working with collections in Java involved writing iterative loops and manually performing operations on the data. However, Java 8 introduced Java Streams, a game-changing feature that brought functional programming concepts to the Java language. This opened up new possibilities for writing expressive and concise code when working with collections.
 
+
 ## Importance of Learning Java Streams
 
 Learning Java Streams is crucial for several reasons. Firstly, it enables you to write more readable and maintainable code. With the power of lambda expressions and functional interfaces, you can perform complex operations on collections in a more concise and expressive manner.

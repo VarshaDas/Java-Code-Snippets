@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 
 public class StreamsCodeSolutions {
     public static void main(String[] args) {
-        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,8,10);
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,8,101);
         int[] arr = {1,2,3,4};
        // Write a program to find the sum of all elements in a List using streams.
         int sums = nums.stream().mapToInt(Integer::intValue).sum();
@@ -11,7 +11,7 @@ public class StreamsCodeSolutions {
 
 
         //Given a List of integers, write a program to find the maximum element using streams.
-        int max = nums.stream().max(Comparator.naturalOrder()).orElse(0);
+        int max = nums.stream().max(Comparator.naturalOrder()).get();
 
         System.out.println("max element :"+max);
 
@@ -78,7 +78,7 @@ public class StreamsCodeSolutions {
         //Find the longest string in a list using streams.
         fruits.stream().mapToInt(String::length).max();
 
-        //Group a list of objects based on a specific attribute using streams.
+//        Group a list of objects based on a specific attribute using streams.
 //        List<Employee> sortedEmployees = people.stream()
 //                .sorted(Comparator.comparing(Employee::getDepartment)
 //                        .thenComparing(Employee::getSalary))
@@ -98,11 +98,6 @@ public class StreamsCodeSolutions {
                 .skip(1)
                 .findFirst();
 
-
-        //Merge multiple lists into a single list using streams.
-//        List<Integer> mergedList = Stream.of(list1, list2, list3)
-//                .flatMap(List::stream)
-//                .collect(Collectors.toList());
 
 
         //Find the intersection of two lists using streams
