@@ -24,5 +24,18 @@ public class StreamsTenPracticeQuestions {
         // 9. Given a List of objects, write a program to sort the objects based on a specific attribute using streams.
 
         // 10. Write a program to check if all elements in a List satisfy a given condition using streams.
+
+        //Extra practice questions
+
+        // 11. Given a List of integers, write a program to find the difference between the maximum and minimum elements using streams.
+
+        // 12. Write a program to check if a List of strings contains at least one uppercase word using streams.
+
+        // 13. Given a List of integers, write a program to filter out the prime numbers using streams.
+
+        // 14. Write a program to check if a List of strings contains any duplicates using streams.
+
+        // 15. Given a List of strings, write a program to count the total number of characters in all strings using streams.
+
     }
 }
