@@ -1,7 +1,7 @@
 
 import java.util.Objects;
 
-public class Person implements Comparable<Person> {
+public class Person {
     private String name;
     private int age;
 
@@ -50,21 +50,7 @@ public class Person implements Comparable<Person> {
         return Objects.hash(name, age);
     }
 
-    @Override
-    public int compareTo(Person other) {
-        return this.name.compareTo(other.getName());
-    }
 
-
-
-    public static void main(String[] args) {
-        Person person1 = new Person("John", 23);
-        Person person2 = new Person("John",25);
-        System.out.println(person1.compareTo(person2));
-        System.out.println(person1.equals(person2));
-
-
-    }
 }
 
 

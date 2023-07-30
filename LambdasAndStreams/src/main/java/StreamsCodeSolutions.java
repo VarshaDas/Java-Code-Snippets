@@ -78,7 +78,7 @@ public class StreamsCodeSolutions {
         //Find the longest string in a list using streams.
         fruits.stream().mapToInt(String::length).max();
 
-        //Group a list of objects based on a specific attribute using streams.
+//        Group a list of objects based on a specific attribute using streams.
 //        List<Employee> sortedEmployees = people.stream()
 //                .sorted(Comparator.comparing(Employee::getDepartment)
 //                        .thenComparing(Employee::getSalary))
@@ -98,11 +98,6 @@ public class StreamsCodeSolutions {
                 .skip(1)
                 .findFirst();
 
-
-        //Merge multiple lists into a single list using streams.
-//        List<Integer> mergedList = Stream.of(list1, list2, list3)
-//                .flatMap(List::stream)
-//                .collect(Collectors.toList());
 
 
         //Find the intersection of two lists using streams
