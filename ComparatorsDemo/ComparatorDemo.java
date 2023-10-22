@@ -1,4 +1,3 @@
-package org.codewithease.javatopics.ComparatorsDemo;
 
 import org.codewithease.javatopics.commons.Employee;
 
@@ -13,7 +12,7 @@ public class ComparatorDemo {
     public static void main(String[] args) {
 
         /*
-        Sort List of Objects
+       Sort List of Objects
 
        Custom Sorting Criteria
 
@@ -28,19 +27,17 @@ public class ComparatorDemo {
         List<String> fruits = Arrays.asList("apple", "cherry", "banana", "pineapple", "kiwi", "elderberry");
 
 //        fruits.sort(Comparator.comparingInt(String::length));
+        Collections.sort(fruits, Comparator.comparingInt(String::length));
 
-        Collections.sort(fruits,Comparator.comparingInt(String::length));
-
-//        System.out.println(fruits);
-
+        System.out.println("fruits "+fruits);
 
 
         // 2.Sort the list of integers in descending order and print the result
 
         List<Integer> nums = Arrays.asList(3,2,90,34,21,12);
+        nums.sort(Comparator.reverseOrder());
 
-        Collections.sort(nums, Comparator.reverseOrder());
-//        System.out.println(nums);
+        System.out.println("nums in reverse order : "+nums);
 
 
         // 3.Sort the list of employees based on their age in ascending order and print the result
@@ -50,32 +47,36 @@ public class ComparatorDemo {
                 new Employee(3, "Tony", 21, 1000),
                 new Employee(4, "Ramesh", 30, 5000));
 
-//        Collections.sort(employees,Comparator.comparingInt(Employee::getAge));
-//        System.out.println(employees);
-
+        employees.sort(Comparator.comparingInt(Employee::getAge));
+        System.out.println("employees based on age "+employees);
 
 
 
         // 4.Sort the list of employees based on their age in ascending order. If the ages are the same, compare by salary. Print the result.
 
-//        Collections.sort(employees, Comparator.comparingInt(Employee::getAge).thenComparingInt(Employee::getSalary));
-//        System.out.println(employees);
+        employees.sort(Comparator.comparingInt(Employee::getAge).thenComparing(Employee::getSalary));
+        System.out.println(
+                "employees with multiple sort criteria "+employees
+        );
+
 
 
         // 5.Sort the list of strings based on the index of the first occurrence of "e" in each string and print the result
 
+        fruits.sort(Comparator.comparingInt(e -> e.indexOf("e")));
 
-//        Collections.sort(fruits, Comparator.comparingInt( s -> s.indexOf("e")));
-//        System.out.println(fruits);
+        System.out.println("fruits with index position sorting :: "+ fruits);
 
 
 
         //6. Sort a list of strings ignoring case sensitivity using a case-insensitive comparator.
 
         List<String> fruitsMix = Arrays.asList("APPLE", "cherry", "baNaNa", "pineapple", "KiWI", "elderberry");
-        Collections.sort(fruitsMix, String.CASE_INSENSITIVE_ORDER);
+        Comparator<String> caseInsensitiveComp = String.CASE_INSENSITIVE_ORDER;
+//        fruitsMix.sort(caseInsensitiveComp);
+        Collections.sort(fruitsMix);
 
-//        System.out.println(fruitsMix);
+        System.out.println(fruitsMix);
 
 
         //7. Sort a list of dates in ascending order using the comparing() method with a lambda expression.
@@ -85,9 +86,13 @@ public class ComparatorDemo {
                 LocalDate.of(2023, 7, 1)
         );
 
+        dates.sort(Comparator.comparing(date -> date));
 
-        Collections.sort(dates, Comparator.comparing(date -> date));
         System.out.println(dates);
+
+
+
+
 
 
     }
