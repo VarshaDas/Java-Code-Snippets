@@ -15,6 +15,8 @@ public class StreamsAllCodeSolutions {
 
         System.out.println("max element :"+max);
 
+
+
         List<String> fruits = Arrays.asList("apple", "banana", "cherry", "coconut", "apple");
 
         //Given a List of strings, write a program to count the number of strings that start with a specific character using streams.
