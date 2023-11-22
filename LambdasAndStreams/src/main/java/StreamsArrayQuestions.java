@@ -182,13 +182,21 @@ public class StreamsArrayQuestions {
 
         //11. Given an array of integers, find the subarray with the maximum number of distinct elements.
 
+        int[] array = {1, 2, 3, 4, 2, 3, 5, 6};
+
+        int[] maxDistinctSubarray = Arrays.stream(array).mapToObj(startIndex -> Arrays.stream(array).skip(startIndex).distinct().toArray())
+                .max((a, b) -> Integer.compare(a.length, b.length)).orElse(new int[0]);
+
+        System.out.println("Subarray with the maximum number of distinct elements: " +
+                Arrays.toString(maxDistinctSubarray));
+
         /*
-         *  Time Complexity: 
+         *  Time Complexity: O(n^2), where n is the length of the array.
          *
-         *  Space Complexity: 
+         *  Space Complexity: O(n*d), where n is the length of the array and d is the average number of distinct elements in a subarray.
          * 
-         *  Comparision with traditional approach: 
-         * 
+         *  Comparision with traditional approach: The traditional approach involves iterating through the array only once, giving the time complexity of O(n), whereas the stream based approach has a time complexity of O(n^2), due to nested stream operations.
+         *  The traditional loop based approach has a time complexity of O(d). Hence, the loop based traditional approach is more efficient in terms of both time and space. 
          * 
          * 
          */
