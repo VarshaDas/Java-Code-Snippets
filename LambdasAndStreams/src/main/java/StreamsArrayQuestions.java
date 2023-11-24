@@ -181,34 +181,6 @@ public class StreamsArrayQuestions {
          * 
          */
 
-        //9. How do you perform a binary search in a given array?
-
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int target = 6;
-
-        int index = Arrays.stream(array)
-                .boxed()
-                .filter(element -> element == target)
-                .findFirst()
-                .mapToInt(i -> 1)
-                .orElse(-1);
-
-        if (index != -1) {
-            System.out.println("Element " + target + " found at index: " + index);
-        } else {
-            System.out.println("Element " + target + " not found in the array.");
-        }
-
-        /*
-         *  Time Complexity: O(n), where n is the length of the array.
-         *
-         *  Space Complexity:  O(n) due to the boxing operation.
-         * 
-         *  Comparision with traditional approach: Both solutions have similar time complexity, but the traditional loop-based solution tends to be more memory-efficient.
-         *  Both approaches have same space complexity, but the traditional loop-based solution has better space efficiency as it doesn't involve boxing operations.
-         * 
-         * 
-         */
 
     }
 }
