@@ -1,16 +1,20 @@
-import java.util.stream.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class StreamsQuestions {
+public class StreamsPart2 {
 
     public static void main(String[] args) {
 
         List<Integer> numbers = Arrays.asList(123, 45, 167, 189, 12, 1234, 198, 102);
 
         List<String> fruits = Arrays.asList("Mango", "Apple", "Banana", "Kiwi");
+
+        String str = "madam";
 
         //1. Given a list of integers, find the total number of elements present in the list. 
 
@@ -38,7 +42,6 @@ public class StreamsQuestions {
 
         //5. Count the occurrences of each character in a given string and return a map with character frequencies.
 
-        String str = "programming";
         Map<Character, Long> charFrequencyMap = str.chars().mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println("Character frequencies: " + charFrequencyMap);
@@ -90,13 +93,11 @@ public class StreamsQuestions {
 
         //12. Reverse each word of a string.
 
-        String str = "Hello World!"; 
         String reversedStr = Arrays.stream(str.split(" ")).map(word -> new StringBuffer(word).reverse()).collect(Collectors.joining(" "));  
         System.out.println("Reversed String: " + reversedStr);
 
         //13. Check if a string is palindrome or not. 
 
-        String str = "madam";
         boolean isPalindrome = IntStream.range(0, str.length() / 2)
 				.noneMatch(index -> str.charAt(index) != str.charAt(str.length() - index - 1));
         if(isPalindrome)

@@ -7,14 +7,17 @@ import java.util.stream.*;
  *  This code contains top array questions asked in interviews and coding rounds and their solution using Streams API
  * 
 */
-public class StreamsArrayQuestions {
+public class StreamsPart2_Array {
 
     public static void main(String[] args) {
 
-        //1. How do you check if two arrays are equal or not?
-
         int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = {1, 2, 3, 4, 5};
+
+        Integer[] numbers = {1, 2, 3, 4, 5, 2, 3, 6, 7, 8, 4, 9, 10, 10};
+
+        //1. How do you check if two arrays are equal or not?
+
         boolean equal = IntStream.range(0, arr1.length).allMatch(i -> arr1[i] == arr2[i]);
 
         System.out.println("Are the arrays equal: " + equal);
@@ -30,10 +33,8 @@ public class StreamsArrayQuestions {
          *
          */
 
-
         //2. How do you find duplicate numbers in an array if it contains multiple duplicates?
 
-        Integer[] numbers = {1, 2, 3, 4, 5, 2, 3, 6, 7, 8, 4, 9, 10, 10};
         Set<Integer> uniqueNumbers = new HashSet<>();
         Set<Integer> duplicates = Arrays.stream(numbers).filter(n -> !uniqueNumbers.add(n)).collect(Collectors.toSet());
         // If not added to the set, it's a duplicate
@@ -69,10 +70,7 @@ public class StreamsArrayQuestions {
 
         //4. How do you merge two sorted arrays into a single sorted array?
 
-        int[] array1 = {1, 3, 5, 7};
-        int[] array2 = {2, 4, 6, 8};
-
-        int[] mergedArray = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2)).sorted().toArray();
+        int[] mergedArray = IntStream.concat(Arrays.stream(arr1), Arrays.stream(arr2)).sorted().toArray();
         System.out.println("Merged and sorted array: " + Arrays.toString(mergedArray));
 
         /*
@@ -86,13 +84,11 @@ public class StreamsArrayQuestions {
 
         //5. Given an array of integers, find all pairs that sum up to a specific target value.
 
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int targetSum = 10;
 
-        Arrays.stream(array)
-                .boxed()
+        Arrays.stream(arr1).boxed()
                 .flatMap(i ->
-                        Arrays.stream(array)
+                        Arrays.stream(arr1)
                                 .boxed()
                                 .filter(j -> i + j == targetSum && i <= j)
                                 .map(j -> new int[]{i, j})
@@ -115,14 +111,13 @@ public class StreamsArrayQuestions {
     
         //6. Rotate an array to the right by a given number of steps.
 
-        int[] array = {1, 2, 3, 4, 5};
         int steps = 2;
-        rotationIndex = array.length - steps % array.length;
+        int rotationIndex = arr1.length - steps % arr1.length;
 
-        int[] rotatedArray = IntStream.concat(Arrays.stream(Arrays.copyOfRange(array, rotationIndex, array.length)),
-                                Arrays.stream(Arrays.copyOfRange(array, 0, rotationIndex))).toArray();
+        int[] rotatedArray = IntStream.concat(Arrays.stream(Arrays.copyOfRange(arr1, rotationIndex, arr1.length)),
+                                Arrays.stream(Arrays.copyOfRange(arr1, 0, rotationIndex))).toArray();
 
-        System.out.println("Original Array: " + Arrays.toString(array));
+        System.out.println("Original Array: " + Arrays.toString(arr1));
         System.out.println("Rotated Array: " + Arrays.toString(rotatedArray));
 
 
@@ -139,8 +134,6 @@ public class StreamsArrayQuestions {
 
         //7. How do you find the intersection of two arrays of integers?
 
-        int[] arr1 = {1, 2, 3, 4, 5};
-        int[] arr2 = {3, 4, 5, 6, 7};
 
         int[] intersection = Arrays.stream(arr1).filter(value -> Arrays.stream(arr2).anyMatch(value2 -> value == value2)).distinct().toArray();
 
@@ -159,16 +152,14 @@ public class StreamsArrayQuestions {
          */
 
         //8. How do you perform linear search in a given array?
+        
+        int target = 7;
+        boolean present =  Arrays.stream(numbers).anyMatch(element -> element == target);
 
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int target = 6;
-
-        int index = Arrays.stream(array).boxed().filter(element -> element == target).findFirst().mapToInt(i -> 1).orElse(-1);
-
-        if (index != -1) {
-            System.out.println("Element " + target + " found at index: " + index);
+        if (present) {
+            System.out.println("Element " + target + "present in the array");
         } else {
-            System.out.println("Element " + target + " not found in the array.");
+            System.out.println("Element " + target + " not present in the array.");
         }
 
         /*
