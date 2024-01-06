@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.stream.*;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ public class StreamsQuestions {
 
         List<String> fruits = Arrays.asList("Mango", "Apple", "Banana", "Kiwi");
 
-        //1. Given a list of integers, find the total number of elements present in the list. 
+        //1. Given a list of integers, find the total number of elements present in the list.
 
         long totalCount = numbers.stream().count();
         System.out.println("Total number of elements: " + totalCount);
@@ -40,19 +41,19 @@ public class StreamsQuestions {
 
         String str = "programming";
         Map<Character, Long> charFrequencyMap = str.chars().mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
         System.out.println("Character frequencies: " + charFrequencyMap);
 
-        //6. Given a list of integers, sort all the values present in it in descending order. 
+        //6. Given a list of integers, sort all the values present in it in descending order.
 
         List<Integer> sortedDescending = numbers.stream()
-                .sorted((a, b) -> b.compareTo(a)) // Comparator.reverseOrder()
+                .sorted(Comparator.reverseOrder()) // Comparator.reverseOrder()
                 .collect(Collectors.toList());
         System.out.println("Sorted in descending order: " + sortedDescending);
 
         //7. Given a list of strings, sort them according to increasing order of their length.
 
-        List<String> sortedByLength = fruits.stream().sorted((s1, s2) -> Integer.compare(s1.length(), s2.length())).collect(Collectors.toList());
+        List<String> sortedByLength = fruits.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
         System.out.println("Sorted by length in increasing order: " + sortedByLength);
 
         //8. Given two lists of strings, merge them and remove duplicates.
@@ -67,7 +68,7 @@ public class StreamsQuestions {
         int number = 12345;
         int sumOfDigits = String.valueOf(number).chars().map(Character::getNumericValue).sum();
         System.out.println("Sum of digits: " + sumOfDigits);
-        
+
 
         //10. Merge two unsorted arrays into a single sorted array.
 
@@ -80,30 +81,30 @@ public class StreamsQuestions {
 
         String s1 = "listen";
         String s2 = "silent";
-         
+
         s1 = Stream.of(s1.split("")).map(String::toLowerCase).sorted().collect(Collectors.joining());
         s2 = Stream.of(s2.split("")).map(String::toLowerCase).sorted().collect(Collectors.joining());
-        if (s1.equals(s2)) 
+        if (s1.equals(s2))
             System.out.println("Two strings are anagrams");
         else
             System.out.println("Two strings are not anagrams");
 
         //12. Reverse each word of a string.
 
-        String str = "Hello World!"; 
-        String reversedStr = Arrays.stream(str.split(" ")).map(word -> new StringBuffer(word).reverse()).collect(Collectors.joining(" "));  
+//        String str = "Hello World!";
+        String reversedStr = Arrays.stream(str.split(" ")).map(word -> new StringBuffer(word).reverse()).collect(Collectors.joining(" "));
         System.out.println("Reversed String: " + reversedStr);
 
-        //13. Check if a string is palindrome or not. 
+        //13. Check if a string is palindrome or not.
 
-        String str = "madam";
+//        String str = "madam";
         boolean isPalindrome = IntStream.range(0, str.length() / 2)
 				.noneMatch(index -> str.charAt(index) != str.charAt(str.length() - index - 1));
         if(isPalindrome)
             System.out.println(str + " is palindrome");
         else
             System.out.println(str + " is not palindrome");
-        
+
 
         //14. Given a list of lists of strings, flatten it into a single list of unique words.
 
