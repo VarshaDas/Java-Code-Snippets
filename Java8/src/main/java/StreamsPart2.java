@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class StreamsQuestions {
+public class StreamsPart2 {
 
     public static void main(String[] args) {
 
@@ -14,6 +17,9 @@ public class StreamsQuestions {
         List<String> fruits = Arrays.asList("Mango", "Apple", "Banana", "Kiwi");
 
         //1. Given a list of integers, find the total number of elements present in the list.
+        String str = "madam";
+
+        //1. Given a list of integers, find the total number of elements present in the list. 
 
         long totalCount = numbers.stream().count();
         System.out.println("Total number of elements: " + totalCount);
@@ -39,7 +45,6 @@ public class StreamsQuestions {
 
         //5. Count the occurrences of each character in a given string and return a map with character frequencies.
 
-        String str = "programming";
         Map<Character, Long> charFrequencyMap = str.chars().mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
         System.out.println("Character frequencies: " + charFrequencyMap);
