@@ -73,8 +73,7 @@ public class ComparatorDemo {
 
         List<String> fruitsMix = Arrays.asList("APPLE", "cherry", "baNaNa", "pineapple", "KiWI", "elderberry");
         Comparator<String> caseInsensitiveComp = String.CASE_INSENSITIVE_ORDER;
-//        fruitsMix.sort(caseInsensitiveComp);
-        Collections.sort(fruitsMix);
+        fruitsMix.sort(caseInsensitiveComp);
 
         System.out.println(fruitsMix);
 
