@@ -1,4 +1,3 @@
-Certainly! Here's an updated README with code snippets showcasing a few functionalities of the Arrays and Collections Utility Class:
 
 ---
 
@@ -52,14 +51,3 @@ int max = ArraysAndCollectionsUtils.findMax(arrayList);
 System.out.println("Maximum element in ArrayList: " + max);
 ```
 
-## Contribution
-
-Contributions to this utility class are welcome! If you have additional functionalities or improvements to suggest, feel free to submit a pull request or open an issue on the GitHub repository.
-
-## License
-
-This utility class is provided under the [MIT License](LICENSE).
-
----
-
-Feel free to adjust the content or add more code snippets to showcase additional functionalities of your utility class!
