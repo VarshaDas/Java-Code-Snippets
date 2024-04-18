@@ -10,7 +10,7 @@ public class StreamsCodeDemoPart2 {
 
     public static void main(String[] args) {
 
-        //1. Given a sentence, find and print the frequency of each word.
+        // 1. Given a sentence, find and print the frequency of each word.
         String sentence = "Java is a programming language. Java is versatile. Java is fun!";
 
         Map<String, Long> wordFreqMap = Arrays.stream(sentence.split("\\s+"))
@@ -18,7 +18,7 @@ public class StreamsCodeDemoPart2 {
 
         printArgs(wordFreqMap.toString());
 
-        //2. Given a list of integers, find out all the numbers starting with 1.
+        // 2. Given a list of integers, find out all the numbers starting with 1.
 
         List<Integer> numList = Arrays.asList(12, 13, 18, 21, 90, 11);
 
@@ -55,7 +55,7 @@ public class StreamsCodeDemoPart2 {
 
         printArgs(Arrays.toString(newArr));
 
-        //6. Given a list of words, filter and print the palindromes
+        // 6. Given a list of words, filter and print the palindromes
 
         List<String> strings = List.of("level", "hello", "radar", "world", "deed");
 
@@ -71,7 +71,7 @@ public class StreamsCodeDemoPart2 {
         int[] sortedArray = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2)).sorted().toArray();
         printArgs(Arrays.toString(sortedArray));
 
-        //8. Given two lists of strings, concatenate them and remove duplicates.
+        // 8. Given two lists of strings, concatenate them and remove duplicates.
 
         List<String> list1 = List.of("apple", "banana", "orange");
         List<String> list2 = List.of("banana", "kiwi", "grape");
@@ -93,20 +93,20 @@ public class StreamsCodeDemoPart2 {
 
         printArgs(studentMap.toString());
 
-        //10. Given a list of strings, sort them according to increasing order of their length.
+        // 10. Given a list of strings, sort them according to increasing order of their length.
 
         List<String> fruits = Arrays.asList("Mango", "pear", "Apple", "Banana", "Pineapple", "Kiwi");
 
         fruits.stream().sorted(Comparator.comparingInt(String::length)).forEach(StreamsCodeDemoPart2::printArgs);
 
-        //12.Partition a list of numbers into two groups: even and odd, using a custom predicate.
+        // 11.Partition a list of numbers into two groups: even and odd, using a custom predicate.
         List<Integer> numbers1 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Map<Boolean, List<Integer>> partitionedNumbers = numbers1.stream()
                 .collect(Collectors.partitioningBy(n -> n % 2 == 0));
 
         printArgs(partitionedNumbers.toString());
 
-        //13. Find the squares of the first three even numbers in a list.
+        // 12. Find the squares of the first three even numbers in a list.
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         List<Integer> firstThreeSquares = numbers.stream()
@@ -117,7 +117,7 @@ public class StreamsCodeDemoPart2 {
 
         printArgs(firstThreeSquares.toString());
 
-        // 14. Flatten a list of lists
+        // 13. Flatten a list of lists
 
         List<List<Integer>> listOfLists = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5, 6));
         List<Integer> flattenedList = listOfLists.stream()
@@ -126,7 +126,7 @@ public class StreamsCodeDemoPart2 {
 
         printArgs(flattenedList.toString());
 
-        // 15. Find prime numbers in a given array.
+        // 14. Find prime numbers in a given array.
 
         int[] primeInputList = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 29, 30};
 
@@ -137,7 +137,7 @@ public class StreamsCodeDemoPart2 {
                         .toString()
         );
 
-        // 16. String array to Map with String length as the key. Re-using fruits List here. :)
+        // 15. String array to Map with String length as the key. Re-using fruits List here. :)
 
         printArgs(
                 fruits.stream()
@@ -150,13 +150,20 @@ public class StreamsCodeDemoPart2 {
                         .toString()
         );
 
-        // 17. Find the topper in the list of students. Re-using students here.
+        // 16. Find the topper in the list of students. Re-using students here.
         Optional<Student> topper = students.stream()
                 .max(Comparator.comparingInt(student -> student.grade));
 
         topper.ifPresent(s -> printArgs(s.toString()));
     }
 
+
+    /**
+     * Helper method for printing the logs.
+     * This makes it easy to enable or disable logs.
+     *
+     * @param message String to be printed.
+     */
     private static void printArgs(String message) {
         if (DEBUG) {
             System.out.println(message);
@@ -165,6 +172,12 @@ public class StreamsCodeDemoPart2 {
         }
     }
 
+    /**
+     * Method to check if the given number is prime or not.
+     *
+     * @param number int input for checking prime number.
+     * @return true if prime, false otherwise.
+     */
     private static boolean isPrime(int number) {
         if (number <= 1) {
             return false;
@@ -177,6 +190,12 @@ public class StreamsCodeDemoPart2 {
         return true;
     }
 
+    /**
+     * Record to template a student's name and grade.
+     *
+     * @param name  String name of the student.
+     * @param grade int grade of the student.
+     */
     public record Student(String name, int grade) {
         @Override
         public String toString() {
