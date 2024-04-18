@@ -1,16 +1,17 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamsCodeDemoPart2 {
+    // Enable this to see logs.
+    private static final boolean DEBUG = true;
+
     public static void main(String[] args) {
 
         //1. Given a sentence, find and print the frequency of each word.
-        String sentence = "Java is a programming language. Java is versatile. Java is fun.";
+        String sentence = "Java is a programming language. Java is versatile. Java is fun!";
 
         Map<String, Long> wordFreqMap = Arrays.stream(sentence.split("\\s+"))
                 .collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
@@ -29,7 +30,7 @@ public class StreamsCodeDemoPart2 {
 
         // 3. Given a list of names, group them by their first letter, and then count the number of names in each group.
 
-        String[] names = {"Alice", "Bob", "Charlie", "Amy", "Bill", "Anna"};
+        String[] names = {"Alice", "Bob", "Charlie", "Amy", "Bill", "Anna", "John", "Michael", "Rambo", "Batman"};
 
         Map<Character, Long> namesMap = Arrays.stream(names)
                 .collect(Collectors.groupingBy(s -> s.charAt(0), Collectors.counting()));
@@ -124,11 +125,65 @@ public class StreamsCodeDemoPart2 {
                 .toList();
 
         printArgs(flattenedList.toString());
+
+        // 15. Find prime numbers in a given array.
+
+        int[] primeInputList = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 29, 30};
+
+        printArgs(
+                Arrays.stream(primeInputList)
+                        .filter(StreamsCodeDemoPart2::isPrime)
+                        .sorted()
+                        .toString()
+        );
+
+        // 16. String array to Map with String length as the key. Re-using fruits List here. :)
+
+        printArgs(
+                fruits.stream()
+                        .collect(
+                                Collectors.toMap(
+                                        Function.identity(),
+                                        String::length
+                                )
+                        )
+                        .toString()
+        );
+
+        // 17. Find the topper in the list of students. Re-using students here.
+        Optional<Student> topper = students.stream()
+                .max(Comparator.comparingInt(student -> student.grade));
+
+        topper.ifPresent(s -> printArgs(s.toString()));
     }
 
     private static void printArgs(String message) {
-        System.out.println(message);
+        if (DEBUG) {
+            System.out.println(message);
+        } else {
+            System.out.println("Please change 'DEBUG' to true to see logs.");
+        }
     }
 
-    public record Student(String name, int grade) {}
+    private static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    public record Student(String name, int grade) {
+        @Override
+        public String toString() {
+            return "Student{" +
+                    "name='" + name + '\'' +
+                    ", grade=" + grade +
+                    '}';
+        }
+    }
 }
