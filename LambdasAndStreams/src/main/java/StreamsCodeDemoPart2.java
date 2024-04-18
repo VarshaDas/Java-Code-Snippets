@@ -16,7 +16,7 @@ public class StreamsCodeDemoPart2 {
         Map<String, Long> wordFreqMap = Arrays.stream(sentence.split("\\s+"))
                 .collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
 
-        printArgs(wordFreqMap.toString());
+        printArgs(wordFreqMap);
 
         // 2. Given a list of integers, find out all the numbers starting with 1.
 
@@ -26,7 +26,7 @@ public class StreamsCodeDemoPart2 {
                 .filter(n -> String.valueOf(n).startsWith("1"))
                 .toList();
 
-        printArgs(numbersWithOne.toString());
+        printArgs(numbersWithOne);
 
         // 3. Given a list of names, group them by their first letter, and then count the number of names in each group.
 
@@ -35,7 +35,7 @@ public class StreamsCodeDemoPart2 {
         Map<Character, Long> namesMap = Arrays.stream(names)
                 .collect(Collectors.groupingBy(s -> s.charAt(0), Collectors.counting()));
 
-        printArgs(namesMap.toString());
+        printArgs(namesMap);
 
         // 4. Find and print duplicate numbers in an array if it contains multiple duplicates?
 
@@ -47,13 +47,13 @@ public class StreamsCodeDemoPart2 {
                 //key -value - 2 (k), 2(val)
                 .filter(entry -> entry.getValue() > 1)
                 .map(Map.Entry::getKey)
-                .forEach(x -> printArgs(x.toString()));
+                .forEach(StreamsCodeDemoPart2::printArgs);
 
         // 5. How are duplicates removed from a given array in Java?
 
         int[] newArr = Arrays.stream(arr).distinct().toArray();
 
-        printArgs(Arrays.toString(newArr));
+        printArgs(newArr);
 
         // 6. Given a list of words, filter and print the palindromes
 
@@ -62,22 +62,25 @@ public class StreamsCodeDemoPart2 {
         List<String> palindromeWords = strings.stream().
                 filter(str -> str.contentEquals(new StringBuilder(str).reverse())).toList();
 
-        printArgs(palindromeWords.toString());
+        printArgs(palindromeWords);
 
         // 7. How do you merge two sorted arrays into a single sorted array?
         int[] array1 = {1, 3, 32, 5, 7};
         int[] array2 = {2, 4, 6, 62, 8};
 
         int[] sortedArray = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2)).sorted().toArray();
-        printArgs(Arrays.toString(sortedArray));
+        printArgs(sortedArray);
 
         // 8. Given two lists of strings, concatenate them and remove duplicates.
 
         List<String> list1 = List.of("apple", "banana", "orange");
         List<String> list2 = List.of("banana", "kiwi", "grape");
 
-        List<String> uniqueList = Stream.concat(list1.stream(), list2.stream()).distinct().toList();
-        printArgs(uniqueList.toString());
+        List<String> uniqueList = Stream
+                .concat(list1.stream(), list2.stream())
+                .distinct()
+                .toList();
+        printArgs(uniqueList);
 
         // 9. Student Grade Classification - 70 and above pass
 
@@ -91,7 +94,7 @@ public class StreamsCodeDemoPart2 {
         Map<String, List<Student>> studentMap =
                 students.stream().collect(Collectors.groupingBy(student -> student.grade >= 70 ? "Pass" : "Fail"));
 
-        printArgs(studentMap.toString());
+        printArgs(studentMap);
 
         // 10. Given a list of strings, sort them according to increasing order of their length.
 
@@ -104,7 +107,7 @@ public class StreamsCodeDemoPart2 {
         Map<Boolean, List<Integer>> partitionedNumbers = numbers1.stream()
                 .collect(Collectors.partitioningBy(n -> n % 2 == 0));
 
-        printArgs(partitionedNumbers.toString());
+        printArgs(partitionedNumbers);
 
         // 12. Find the squares of the first three even numbers in a list.
 
@@ -115,7 +118,7 @@ public class StreamsCodeDemoPart2 {
                 .limit(3)
                 .toList();
 
-        printArgs(firstThreeSquares.toString());
+        printArgs(firstThreeSquares);
 
         // 13. Flatten a list of lists
 
@@ -124,7 +127,7 @@ public class StreamsCodeDemoPart2 {
                 .flatMap(List::stream)
                 .toList();
 
-        printArgs(flattenedList.toString());
+        printArgs(flattenedList);
 
         // 14. Find prime numbers in a given array.
 
@@ -134,7 +137,6 @@ public class StreamsCodeDemoPart2 {
                 Arrays.stream(primeInputList)
                         .filter(StreamsCodeDemoPart2::isPrime)
                         .sorted()
-                        .toString()
         );
 
         // 15. String array to Map with String length as the key. Re-using fruits List here. :)
@@ -147,16 +149,14 @@ public class StreamsCodeDemoPart2 {
                                         String::length
                                 )
                         )
-                        .toString()
         );
 
         // 16. Find the topper in the list of students. Re-using students here.
         Optional<Student> topper = students.stream()
                 .max(Comparator.comparingInt(student -> student.grade));
 
-        topper.ifPresent(s -> printArgs(s.toString()));
+        topper.ifPresent(StreamsCodeDemoPart2::printArgs);
     }
-
 
     /**
      * Helper method for printing the logs.
@@ -164,7 +164,7 @@ public class StreamsCodeDemoPart2 {
      *
      * @param message String to be printed.
      */
-    private static void printArgs(String message) {
+    private static <T> void printArgs(T message) {
         if (DEBUG) {
             System.out.println(message);
         } else {
@@ -196,7 +196,7 @@ public class StreamsCodeDemoPart2 {
      * @param name  String name of the student.
      * @param grade int grade of the student.
      */
-    public record Student(String name, int grade) {
+    private record Student(String name, int grade) {
         @Override
         public String toString() {
             return "Student{" +
