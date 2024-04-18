@@ -4,6 +4,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/**
+ * Class to demonstrate Streams, record and generics in Java.
+ */
 public class StreamsCodeDemoPart2 {
     // Enable this to see logs.
     private static final boolean DEBUG = true;
@@ -162,9 +165,9 @@ public class StreamsCodeDemoPart2 {
      * Helper method for printing the logs.
      * This makes it easy to enable or disable logs.
      *
-     * @param message String to be printed.
+     * @param message Generic type to be printed. It could be a String, a List, or a Map.
      */
-    private static <T> void printArgs(T message) {
+    private static <V> void printArgs(V message) {
         if (DEBUG) {
             System.out.println(message);
         } else {
